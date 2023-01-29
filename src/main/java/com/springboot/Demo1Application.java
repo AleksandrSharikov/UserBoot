@@ -11,8 +11,7 @@ public class Demo1Application {
     public static void main(String[] args) {
 
         ApplicationContext apc= SpringApplication.run(Demo1Application.class, args);
-      //  for(String s: apc.getBeanDefinitionNames())
-      //      System.out.println(s);
+
     }
 
 }
