@@ -2,11 +2,10 @@ package com.springboot.model;
 
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import org.springframework.data.relational.core.mapping.Column;
+
+import jakarta.persistence.*;
+import jakarta.persistence.Column;
+//import org.springframework.data.relational.core.mapping.*;
 
 @Entity
 @Table(name = "users")

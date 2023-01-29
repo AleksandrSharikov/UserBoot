@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import com.springboot.service.UserService;
 
 @Controller
-@RequestMapping(value = "/app")
+@RequestMapping(value = "/")
 public class UsersController {
     private UserService userService;
     @Autowired
@@ -16,34 +16,33 @@ public class UsersController {
         this.userService = userService;
     }
 
-
-
    @RequestMapping(value = "/", method = RequestMethod.GET)
    public String mainTable(Model model){
 
         model.addAttribute("userlist", userService.getUserList());
         return "index";
     }
-    @GetMapping("/new")
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
     public String newUser(Model model){
         model.addAttribute("user", new User());
 
         return "newUserForm";
     }
-/*
+
     @RequestMapping()
     public String saveUser(@ModelAttribute("user") User user) {
         userService.addUser(user);
         return "redirect:/";
     }
 
-    @GetMapping("{id}/edit")
+
+    @RequestMapping(value = "{id}/edit", method = RequestMethod.GET)
     public String editUser(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.getById(id));
         return "editUserForm";
     }
 
-    @PatchMapping("/{id}")
+    @PostMapping("/{id}")
     public String updateUser(@ModelAttribute("user") User user){
         userService.editUser(user, user.getId());
         return "redirect:/";
@@ -54,6 +53,6 @@ public class UsersController {
         userService.deletUser(id);
         return "redirect:/";
     }
-*/
+
 
 }

@@ -36,7 +36,11 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void editUser(User user, int id)  {
-       userDao.deleteById(id);
-       userDao.save(user);
+
+        userDao.findById(id)
+                .ifPresent(u -> {u.setName(user.getName());
+                                    u.setSurname(user.getSurname());
+                                    u.setAge(user.getAge());});
+
     }
 }
