@@ -16,27 +16,27 @@ public class UsersController {
         this.userService = userService;
     }
 
-   @RequestMapping(value = "/", method = RequestMethod.GET)
+   @GetMapping(value = "/")
    public String mainTable(Model model){
 
         model.addAttribute("userlist", userService.getUserList());
         return "index";
     }
-    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    @GetMapping(value = "/new")
     public String newUser(Model model){
         model.addAttribute("user", new User());
 
         return "newUserForm";
     }
 
-    @RequestMapping()
+    @PostMapping(value = "/")
     public String saveUser(@ModelAttribute("user") User user) {
         userService.addUser(user);
         return "redirect:/";
     }
 
 
-    @RequestMapping(value = "{id}/edit", method = RequestMethod.GET)
+    @GetMapping(value = "{id}/edit")
     public String editUser(@PathVariable("id") int id, Model model) {
         model.addAttribute("user", userService.getById(id));
         return "editUserForm";

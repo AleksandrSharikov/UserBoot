@@ -15,26 +15,31 @@ public class UserServiceImpl implements UserService{
     @Autowired
     public UserServiceImpl(UserDao userDao){this.userDao = userDao;}
     @Override
+    @Transactional(readOnly=true)
     public List<User> getUserList() {
         return userDao.findAll();
     }
 
     @Override
+    @Transactional(readOnly=true)
     public User getById(int id) {
         return userDao.getById(id);
     }
 
     @Override
+    @Transactional
     public void deletUser(int id) {
         userDao.deleteById(id);
     }
 
     @Override
+    @Transactional
     public void addUser(User user) {
         userDao.save(user);
     }
 
     @Override
+    @Transactional
     public void editUser(User user, int id)  {
 
         userDao.findById(id)
